@@ -10,7 +10,7 @@ register_plugin(
 	'1.0', 		//Plugin version
 	'multicolor',  //Plugin author
 	'https://ko-fi.com/multicolorplugins', //author website
-	'replace Admin name for security reason without use GSDEBUG', //Plugin description
+	'Rename admin panel for better security without gsconfig.', //Plugin description
 	'plugins', //page type - on which admin tab to display
 	'adminRenamer'  //main function (administration)
 );
