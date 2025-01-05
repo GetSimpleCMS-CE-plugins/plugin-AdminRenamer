@@ -23,28 +23,30 @@ function adminRenamer()
 	global $GSADMIN;
 	global $SITEURL;
 
-	$html = "
+	$html = '
 	<h3>AdminRenamer ☔</h3>
 
-	<p>Your current Admin URL: <span style='color:red!important;'>$SITEURL<b>$GSADMIN</b></span></p>
+	<p>Your current Admin page: <span style="color:red!important;">'.$SITEURL.'<b>'.$GSADMIN.'</b></span></p>
 
-	<form method='post'>
-		<label style='margin-bottom:5px;'>Your new Admin URL name:</label>
-		<input type='hidden' name='newAdminNameOld' value='$GSADMIN'>
-		<input type='text' name='newAdminName' style='width:100%;padding:10px;box-sizing:border-box;margin-bottom:5px;' value='$GSADMIN'>
+	<form method="post">
+		<label style="margin-bottom:5px;">Your new Admin URL name:</label>
+		<input type="hidden" name="newAdminNameOld" value="'.$GSADMIN.'">
+		<input type="text" name="newAdminName" style="width:100%;padding:10px;box-sizing:border-box;margin-bottom:5px;" value="'.$GSADMIN.'">
 
-		<input type='submit' value='Save New URL' name='changeUrl' style='border: solid 1px;
+		<input type="submit" value="Save New URL" name="changeUrl" style="border: solid 1px;
 		padding: 10px 25px;
 		background: #333;
 		color: #fff;
 		display: inline-block;
 		border-radius: 5px;
 		text-decoration: none;
-		margin-bottom: 20px;margin-top:10px;'>
+		margin-bottom: 20px;margin-top:10px;">
 	</form>
-
-	<a href='https://ko-fi.com/I3I2RHQZS' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi3.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
-	";
+	
+	<p><svg xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle" width="24" height="24" viewBox="0 0 24 24"><rect width="24" height="24" fill="none"/><path fill="#e06500" fill-rule="evenodd" d="m3.517 17l7.058-11.783a1.667 1.667 0 0 1 2.85 0L20.483 17a1.667 1.667 0 0 1-1.425 2.5H4.942A1.666 1.666 0 0 1 3.517 17M12 9a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0v-3a1 1 0 0 1 1-1m-1 7a1 1 0 0 1 1-1h.008a1 1 0 1 1 0 2H12a1 1 0 0 1-1-1" clip-rule="evenodd"/></svg> Before upgrading your CMS, you will need to revert the folder name back to "admin".</p>
+	
+	<a href="https://ko-fi.com/I3I2RHQZS" target="_blank"><img height="36" style="border:0px;height:36px;" src="https://storage.ko-fi.com/cdn/kofi3.png?v=3" border="0" alt="Buy Me a Coffee at ko-fi.com" /></a>
+	';
 
 	echo $html;
 
