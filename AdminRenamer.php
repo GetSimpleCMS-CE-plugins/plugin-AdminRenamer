@@ -7,60 +7,48 @@ $thisfile = basename(__FILE__, ".php");
 register_plugin(
 	$thisfile, //Plugin id
 	'AdminRenamer ☔', 	//Plugin name
-	'1.0', 		//Plugin version
+	'1.1', 		//Plugin version
 	'multicolor',  //Plugin author
 	'https://ko-fi.com/multicolorplugins', //author website
 	'Rename admin panel for better security without gsconfig.', //Plugin description
-	'plugins', //page type - on which admin tab to display
+	'settings', //page type - on which admin tab to display
 	'adminRenamer'  //main function (administration)
 );
 
-
 # add a link in the admin tab 'theme'
-add_action('plugins-sidebar', 'createSideMenu', array($thisfile, 'AdminRenamer ☔'));
-
-
+add_action('settings-sidebar', 'createSideMenu', array($thisfile, 'AdminRenamer ☔'));
 
 function adminRenamer()
 {
 	global $GSADMIN;
+	global $SITEURL;
 
 	$html = "
-	
 	<h3>AdminRenamer ☔</h3>
 
-	
-	<p>Now yours name to login panel <b>$GSADMIN</b></p>
+	<p>Your current Admin URL: <span style='color:red!important;'>$SITEURL<b>$GSADMIN</b></span></p>
 
+	<form method='post'>
+		<label style='margin-bottom:5px;'>Your new Admin URL name:</label>
+		<input type='hidden' name='newAdminNameOld' value='$GSADMIN'>
+		<input type='text' name='newAdminName' style='width:100%;padding:10px;box-sizing:border-box;margin-bottom:5px;' value='$GSADMIN'>
 
-<form method='post'>
-<label style='margin-bottom:5px;'>Yours new Admin url name:</label>
-<input type='hidden' name='newAdminNameOld' value='$GSADMIN'>
-<input type='text' name='newAdminName' style='width:100%;padding:10px;box-sizing:border-box;margin-bottom:5px;' value='$GSADMIN'>
- 
-<input type='submit' value='save new url' name='changeUrl' style='border: solid 1px;
-  padding: 10px 25px;
-  background: #333;
-  color: #fff;
-  display: inline-block;
-  border-radius: 5px;
-  text-decoration: none;
-  margin-bottom: 20px;margin-top:10px;'>
+		<input type='submit' value='Save New URL' name='changeUrl' style='border: solid 1px;
+		padding: 10px 25px;
+		background: #333;
+		color: #fff;
+		display: inline-block;
+		border-radius: 5px;
+		text-decoration: none;
+		margin-bottom: 20px;margin-top:10px;'>
 	</form>
 
-<a href='https://ko-fi.com/I3I2RHQZS' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi3.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+	<a href='https://ko-fi.com/I3I2RHQZS' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi3.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 	";
-
-
-
 
 	echo $html;
 
-
 	//function
-
-
-
 	function copyFolderWithPermissions($src, $dst)
 	{
 		if (!is_dir($src)) {
@@ -127,7 +115,6 @@ function adminRenamer()
 		}
 	};
 
-
 	function removeDir($dir)
 	{
 		// Sprawdź, czy folder istnieje
@@ -183,8 +170,6 @@ function adminRenamer()
 	}
 
 	//
-
-
 	if (isset($_POST['changeUrl'])) {
 
 		if ($_POST['newAdminNameOld'] !== $_POST['newAdminName']) {
